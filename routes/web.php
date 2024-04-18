@@ -23,25 +23,10 @@ Route::get('/dashboard', function(){
     return view('layouts.dashboard');
 })->name('dashboard');
 
-// Route::get('/produk', function(){
-//     return view('Produk.produk');
-// })->name('produk');
 
 Route::get('/tambah-produk', function(){
     return view('Produk.formCreateProduk');
 })->name('tambah-produk');
-
-// Route::get('/penjualan', function(){
-//     return view('Penjualan.penjualan');
-// })->name('penjualan');
-
-// Route::get('/tambah-penjualan', function(){
-//     return view('Penjualan.formCreatePenjualan');
-// })->name('tambah-penjualan');
-
-// Route::get('/user', function(){
-//     return view('User.user');
-// })->name('user');
 
 Route::get('/tambah-user', function(){
     return view('User.formCreateuser');
@@ -62,3 +47,4 @@ Route::get('/form-create', [AdminController::class, 'formCreateSale'])->name('fo
 Route::post('/create-sale', [AdminController::class, 'sales'])->name('create-sale');
 Route::post('/import-excel-csv-file', [AdminController::class, 'exportExcelCSV'])->name('export-excel');
 Route::get('/detail-penjualan/{id}', [AdminController::class, 'detailPenjualan'])->name('detail-penjualan');
+Route::get('/export-pdf/{id}', [AdminController::class, 'createPdf'])->name('export-pdf');

@@ -12,7 +12,7 @@ use App\Models\CustomerModel;
 use App\Models\DetailSalesModel;
 use App\Http\Controllers\importExcelCSV;
 use Maatwebsite\Excel\Facades\Excel;
-
+use Pdf;
 class AdminController extends Controller
 {
 
@@ -157,5 +157,12 @@ class AdminController extends Controller
         $salesDetail = DetailSalesModel::find($id);
         $product = ProductModel::all();
         return view('Penjualan.detailPenjualan', compact('salesDetail', 'product'));
+    }
+
+    public function createPdf($id){
+        $data = DetailSalesModel::find($id);
+        view()->share('detail', $data);
+        $pdf = PDF::loadView('Penjualan.detailPenjualan',$data);
+        return $pdf->download('pdf_file.pdf');
     }
 }
