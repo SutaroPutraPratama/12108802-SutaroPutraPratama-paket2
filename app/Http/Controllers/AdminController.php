@@ -162,7 +162,7 @@ class AdminController extends Controller
     public function createPdf($id){
         $data = DetailSalesModel::find($id);
         view()->share('detail', $data);
-        $pdf = PDF::loadView('Penjualan.detailPenjualan',$data);
+        $pdf = PDF::loadView($data);
         return $pdf->download('pdf_file.pdf');
     }
 }

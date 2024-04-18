@@ -63,7 +63,6 @@
     document.getElementById('addSaleItem').addEventListener('click', function() {
         var saleForm = document.getElementById('saleForm');
         var newSaleItem = saleForm.cloneNode(true);
-        // console.log(newSaleItem);
         saleForm.parentNode.insertBefore(newSaleItem, this);
     });
 </script>
