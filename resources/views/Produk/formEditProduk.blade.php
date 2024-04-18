@@ -18,25 +18,29 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card card-primary">
-                <form action="" method="POST">
+                <form action="{{route('update-product', $product->id)}}" method="POST">
                     @csrf
                     @method('patch')
                     <div class="card-body">
                         <div class="form-group">
-                            <label for="">Nama Produk</label>
-                            <input type="" class="form-control" id="" name="NamaProduk" value="">
+                            <label for="">Name</label>
+                            <input type="" class="form-control" id="" name="name" value="{{$product->name}}">
                         </div>
                         <div class="form-group">
-                            <label for="">Harga</label>
-                            <input type="" class="form-control" id="" name="Harga" value="">
+                            <label for="">Price</label>
+                            <input type="" class="form-control" id="" name="price" value="{{$product->price}}">
                         </div>
                         <div class="form-group">
                             <label for="">Stok</label>
-                            <input type="" class="form-control" id="" name="Stok" value="">
+                            <input type="" class="form-control" id="" name="stock" value="{{$product->stock}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Img</label>
+                            <input type="file" class="form-control" id="" name="img" value="{{$product->img}}">
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{route('produk')}}" class="btn btn-warning">Batal</a>
+                        <a href="{{route('product')}}" class="btn btn-warning">Batal</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>

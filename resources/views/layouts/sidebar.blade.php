@@ -27,6 +27,7 @@
                     </p>
                 </a>
             </li>
+            @if (auth()->user()->role == 'admin')
             <li class="nav-item ">
                 <a href="{{route('user')}}" class="nav-link">
                     <i class="nav-icon fas fa-list"></i>
@@ -35,6 +36,7 @@
                     </p>
                 </a>
             </li>
+            @endif
             <li class="nav-item ">
                 <a href="{{route('product')}}" class="nav-link">
                     <i class="nav-icon fas fa-cube"></i>
@@ -44,7 +46,7 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a href="{{route('penjualan')}}" class="nav-link">
+                <a href="{{route('sale')}}" class="nav-link">
                     <i class="nav-icon fas fa-cube"></i>
                     <p>
                         Penjualan

@@ -34,20 +34,23 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($products as $item)
                                 <tr>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
-                                    <th></th>
+                                    <th>{{$loop->iteration}}</th>
+                                    <th>{{$item->name}}</th>
+                                    <th>{{$item->price}}</th>
+                                    <th>{{$item->stock}}</th>
+                                    <th>{{$item->img}}</th>
                                     <th>
-                                        <a href="" class="btn btn-primary" ><i class="nav-icon fas fa-pen"></i></a>
-                                        <form action="" method="POST">
+                                        <a href="{{route('edit-product', $item->id)}}" class="btn btn-primary" ><i class="nav-icon fas fa-pen"></i></a>
+                                        <form action="{{route('delete-product', $item->id)}}" method="POST">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger" type="submit"><i class="nav-icon fas fa-trash"></i></button>
                                         </form>
                                     </th>
                                 </tr>
+                                @endforeach
                             </tbody>
                         </table>
 

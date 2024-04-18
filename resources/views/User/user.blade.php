@@ -12,14 +12,14 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($user as $item)
         <tr>
-            @foreach ($user as $item)
             <th>{{$loop->iteration}}</th>
             <th>{{$item->email}}</th>
             <th>{{$item->name}}</th>
             <th>{{$item->role}}</th>
-            @endforeach
         </tr>
+        @endforeach
     </tbody>
 </table>
 </section>

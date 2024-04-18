@@ -35,9 +35,9 @@
                         </div>
                         <div class="form-group">
                             <label for="">Role</label>
-                            <select name="role" id="">
+                            <select name="role" id="" class="form-control">
                                 <option value="admin">Admin</option>
-                                <option value="petugas">Petugas</option>
+                                <option value="employee">employee</option>
                             </select>
                         </div>
                     </div>

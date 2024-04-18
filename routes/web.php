@@ -31,13 +31,13 @@ Route::get('/tambah-produk', function(){
     return view('Produk.formCreateProduk');
 })->name('tambah-produk');
 
-Route::get('/penjualan', function(){
-    return view('Penjualan.penjualan');
-})->name('penjualan');
+// Route::get('/penjualan', function(){
+//     return view('Penjualan.penjualan');
+// })->name('penjualan');
 
-Route::get('/tambah-penjualan', function(){
-    return view('Penjualan.formCreatePenjualan');
-})->name('tambah-penjualan');
+// Route::get('/tambah-penjualan', function(){
+//     return view('Penjualan.formCreatePenjualan');
+// })->name('tambah-penjualan');
 
 // Route::get('/user', function(){
 //     return view('User.user');
@@ -50,5 +50,13 @@ Route::get('/tambah-user', function(){
 Route::post('/login' ,[AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/product', [AdminController::class, 'allProduct'])->name('product');
+Route::get('/edit-product/{id}', [AdminController::class, 'editProduct'])->name('edit-product');
 Route::get('/user', [AdminController::class, 'allUser'])->name('user');
 Route::post('/create-user', [AdminController::class, 'createUser'])->name('create-user');
+Route::delete('/delete-user', [AdminController::class, 'deleteUser'])->name('delete-user');
+Route::post('/create-product', [AdminController::class, 'createProduct'])->name('create-product');
+Route::patch('/update-product/{id}', [AdminController::class, 'updateProduct'])->name('update-product');
+Route::delete('/delete-product/{id}', [AdminController::class, 'deleteProduct'])->name('delete-product');
+Route::get('/sales', [AdminController::class, 'allSaleData'])->name('sale');
+Route::get('/form-create', [AdminController::class, 'formCreateSale'])->name('form-create-sale');
+Route::post('/create-sale', [AdminController::class, 'sales'])->name('create-sale');

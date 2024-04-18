@@ -18,38 +18,48 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card card-primary">
-                <form action="" method="POST">
+                <form action="{{route('create-sale')}}" method="POST">
                     @csrf
                     <div class="card-body">
                         <div class="form-group">
                             <label for="">Nama Pelanggan</label>
-                            <input type="" class="form-control" id="" name="NamaPelanggan" >
+                            <input type="text" class="form-control" id="" name="name" >
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <input type="" class="form-control" id="" name="Alamat" >
+                            <input type="text" class="form-control" id="" name="address" >
                         </div>
                         <div class="form-group">
                             <label for="">Nomor Telepon</label>
-                            <input type="" class="form-control" id="" name="NomorTelepon" >
+                            <input type="" class="form-control" id="" name="no_hp" >
+                        </div>
+                        <div class="form-group">
+                            <label for="">Nama Petugas</label>
+                            <select name="user_id" class="form-control">
+                                @foreach ($user as $item)
+                                    <option value="{{$item->id}}">{{$item->name}}</option>
+                                @endforeach
+                            </select>
+
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Penjualan</label>
-                            <input type="date" class="form-control" id="" name="TanggalPenjualan" >
+                            <input type="date" class="form-control" id="" name="sale_date" >
                         </div>
-                        
+
                         <div class="form-group">
-                            <button type="button" class="btn btn-primary addProduk">Tambah Produk</button>
                             <label for="">Produk</label>
                             <select name="produk_id" id="" class="form-control">
-                                <option value=""></option>
+                                @foreach ($product as $item)
+                                <option value="{{ $item->Id }}">{{$item->name}}</option>
+                                @endforeach
                             </select>
                             <label for="">Jumlah</label>
-                            <input type="number" class="form-control" id="" name="JumlahProduk">
+                            <input type="number" class="form-control" id="" name="amount">
                         </div>
                     </div>
                     <div class="card-footer">
-                        <a href="{{route('penjualan')}}" class="btn btn-warning">Batal</a>
+                        <a href="{{route('sale')}}" class="btn btn-warning">Batal</a>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
