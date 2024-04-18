@@ -12,10 +12,10 @@ class SalesModel extends Model
     protected $fillable = ['sale_date', 'total_price', 'customer_id', 'user_id'];
 
     public function customer(){
-        return $this->hasMany(CustomerModel::class);
+        return $this->belongsTo(CustomerModel::class);
     }
 
     public function user(){
-        return $this->hasMany(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 }

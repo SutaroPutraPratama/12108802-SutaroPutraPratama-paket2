@@ -46,6 +46,6 @@ class User extends Authenticatable
     ];
 
     public function sale(){
-        return $this->belongsTo(SalesModel::class);
+        return $this->hasMany(SalesModel::class);
     }
 }

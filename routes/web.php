@@ -60,3 +60,5 @@ Route::delete('/delete-product/{id}', [AdminController::class, 'deleteProduct'])
 Route::get('/sales', [AdminController::class, 'allSaleData'])->name('sale');
 Route::get('/form-create', [AdminController::class, 'formCreateSale'])->name('form-create-sale');
 Route::post('/create-sale', [AdminController::class, 'sales'])->name('create-sale');
+Route::post('/import-excel-csv-file', [AdminController::class, 'exportExcelCSV'])->name('export-excel');
+Route::get('/detail-penjualan/{id}', [AdminController::class, 'detailPenjualan'])->name('detail-penjualan');

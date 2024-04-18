@@ -14,10 +14,10 @@ class DetailSalesModel extends Model
     protected $fillable = ['sale_id', 'product_id', 'amount', 'sub_total'];
 
     public function sale(){
-        return $this->hasMany(SalesModel::class);
+        return $this->belongsTo(SalesModel::class);
     }
 
     public function product(){
-        return $this->hasMany(ProductModel::class);
+        return $this->belongsTo(ProductModel::class);
     }
 }

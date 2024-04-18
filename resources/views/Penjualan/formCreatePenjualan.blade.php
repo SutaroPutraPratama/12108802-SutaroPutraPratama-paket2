@@ -47,7 +47,8 @@
                             <input type="date" class="form-control" id="" name="sale_date" >
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group" id="saleForm">
+                            <button type="button" class="btn btn-primary" id="addSaleItem">Tambah Produk</button>
                             <label for="">Produk</label>
                             <select name="product_id" id="" class="form-control">
                                 @foreach ($product as $item)
@@ -67,5 +68,12 @@
         </div>
     </div>
 </div>
-
+<script>
+    // document.getElementById('addSaleItem').addEventListener('click', function() {
+    //     var saleForm = document.getElementById('saleForm');
+    //     var newSaleItem = saleForm.cloneNode(true);
+    //     console.log(newSaleItem);
+    //     saleForm.parentNode.insertBefore(newSaleItem, this);
+    // });
+</script>
 @endsection

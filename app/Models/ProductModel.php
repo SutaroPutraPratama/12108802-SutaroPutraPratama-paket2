@@ -12,6 +12,6 @@ class ProductModel extends Model
     protected $fillable = ['name', 'price', 'stock', 'img'];
 
     public function detailSales(){
-        return $this->belongsTo(DetailSalesModel::class);
+        return $this->hasMany(DetailSalesModel::class);
     }
 }

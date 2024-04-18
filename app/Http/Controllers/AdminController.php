@@ -5,13 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
+use App\Exports\salesExport;
 use App\Models\ProductModel;
 use App\Models\SalesModel;
 use App\Models\CustomerModel;
 use App\Models\DetailSalesModel;
+use App\Http\Controllers\importExcelCSV;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
 {
+
+    public function exportExcelCSV()
+    {
+        return Excel::download(new salesExport, 'sales.xlsx');
+    }
+
     public function createUser(Request $request){
         $validate = $request->validate([
             'email' => 'required',
@@ -100,9 +109,7 @@ class AdminController extends Controller
 
     public function allSaleData(){
         $sales = SalesModel::all();
-        $employee = User::all();
-        $customer = CustomerModel::all();
-        return view('Penjualan.penjualan', compact('sales', 'employee', 'customer'));
+        return view('Penjualan.penjualan', compact('sales'));
     }
 
     public function formCreateSale(){
@@ -132,7 +139,7 @@ class AdminController extends Controller
             'sale_id' => $sale->id,
             'product_id' => $request->product_id,
             'amount' => $request->amount,
-            'sub_total' => 0
+            'sub_total' => $product->price * $request->amount
         ]);
 
         $sale->total_price = $detailSale->sub_total;
@@ -142,5 +149,11 @@ class AdminController extends Controller
             return redirect('sales')->with('success', 'Berhasil Menambah Penjualan Baru');
         }
         return back()->with('error', 'Gagal');
+    }
+
+    public function detailPenjualan($id){
+        $salesDetail = DetailSalesModel::find($id);
+        $product = ProductModel::all();
+        return view('Penjualan.detailPenjualan', compact('salesDetail', 'product'));
     }
 }

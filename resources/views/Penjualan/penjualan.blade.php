@@ -6,7 +6,13 @@
     </div>
 @endif
 <section class="content">
-    <a href="{{route('form-create-sale')}}" class="btn btn-primary">Create Penjualan</a>
+    <div class="" style="display: flex;">
+        <a href="{{route('form-create-sale')}}" class="btn btn-primary">Create Penjualan</a>
+        <form action="{{route('export-excel')}}" method="post" style="margin-left:10px;">
+            @csrf
+            <button type="submit" class="btn btn-primary">Export</button>
+        </form>
+    </div>
     <table class="table table-bordered">
       <thead>
           <tr>
@@ -26,7 +32,7 @@
               <th>{{$sale->total_price}}</th>
               <th>{{$sale->user->name}}</th>
               <th>{{$sale->customer->name}}</th>
-              <th><a href="" class="btn btn-primary">DETAIL</a></th>
+              <th><a href="{{route('detail-penjualan', $sale->id)}}" class="btn btn-primary">DETAIL</a></th>
           </tr>
           @endforeach
       </tbody>
