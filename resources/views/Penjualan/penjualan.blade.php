@@ -1,5 +1,10 @@
 @extends('layouts.index')
 @section('content')
+@if(session('success'))
+    <div class="alert alert-success">
+        {{session('success')}}
+    </div>
+@endif
 <section class="content">
     <a href="{{route('form-create-sale')}}" class="btn btn-primary">Create Penjualan</a>
     <table class="table table-bordered">
@@ -14,14 +19,16 @@
           </tr>
       </thead>
       <tbody>
+        @foreach ($sales as $sale)
           <tr>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
-              <th></th>
+              <th>{{$loop->iteration}}</th>
+              <th>{{$sale->sale_date}}</th>
+              <th>{{$sale->total_price}}</th>
+              <th>{{$sale->user->name}}</th>
+              <th>{{$sale->customer->name}}</th>
               <th><a href="" class="btn btn-primary">DETAIL</a></th>
           </tr>
+          @endforeach
       </tbody>
   </table>
   </section>

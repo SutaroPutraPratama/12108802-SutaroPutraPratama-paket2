@@ -100,7 +100,9 @@ class AdminController extends Controller
 
     public function allSaleData(){
         $sales = SalesModel::all();
-        return view('Penjualan.penjualan', compact('sales'));
+        $employee = User::all();
+        $customer = CustomerModel::all();
+        return view('Penjualan.penjualan', compact('sales', 'employee', 'customer'));
     }
 
     public function formCreateSale(){
@@ -127,17 +129,17 @@ class AdminController extends Controller
 
         $product = ProductModel::find($request->product_id);
         $detailSale = DetailSalesModel::create([
-            'sale_id' => $sale->Id,
+            'sale_id' => $sale->id,
             'product_id' => $request->product_id,
             'amount' => $request->amount,
-            'sub_total' => $product->price * $request->amount
+            'sub_total' => 0
         ]);
 
         $sale->total_price = $detailSale->sub_total;
         $sale->save();
 
         if($detailSale){
-            return redirect('penjualan')->with('success', 'Berhasil Menambah Penjualan Baru');
+            return redirect('sales')->with('success', 'Berhasil Menambah Penjualan Baru');
         }
         return back()->with('error', 'Gagal');
     }

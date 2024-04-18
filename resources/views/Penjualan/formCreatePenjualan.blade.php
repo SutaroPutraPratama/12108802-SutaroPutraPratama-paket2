@@ -49,9 +49,9 @@
 
                         <div class="form-group">
                             <label for="">Produk</label>
-                            <select name="produk_id" id="" class="form-control">
+                            <select name="product_id" id="" class="form-control">
                                 @foreach ($product as $item)
-                                <option value="{{ $item->Id }}">{{$item->name}}</option>
+                                <option value="{{ $item->id }}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                             <label for="">Jumlah</label>
