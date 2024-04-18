@@ -1,0 +1,89 @@
+.image-container{
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+}
+
+.image-container img{
+    border-radius: 10px;
+    
+}
+
+.menu-title{
+    padding-top: 10px;
+}
+
+.menu-row{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-bottom: 75px;
+}
+
+.padding{
+    padding-top: 100px;
+}
+
+.card{
+    margin-bottom: 20px;
+    padding: 10px 1px 10px 1px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card button{
+    width: 90%;
+    margin: auto;
+}
+
+#carousel-example{
+    height: 50px;
+}
+
+.carousel-item img{
+    width: 15%;
+    height: 15% !important;
+}
+
+#carouselExampleControls{
+    margin: auto;
+    width: 100%;
+}
+.row-{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 10px;
+}
+
+.padding-inline{
+    padding-right: 40px;
+    padding-left: 40px;
+}
+
+#button{
+    background-color: red;
+    border: none;
+    scale: 3;
+    margin: auto;
+    margin-right: 40px;
+    margin-left: 40px;
+}
+
+.col-4 { color: #fff; font-size: 48px; padding-bottom: 20px; padding-top: 18px; text-align: center; }
+.col-4:nth-child(3n+1)
+.col-4:nth-child(3n+2)
+.col-4:nth-child(3n+3) 
+    {
+
+    }
+
+.container img{
+    border-radius: 10px;
+    margin: auto;
+}
+
+.description{
+    padding-left: 10px;
+}

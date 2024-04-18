@@ -1,0 +1,36 @@
+.left-nav{
+    display: flex;
+    align-items: left;
+    justify-content: left;
+}
+
+.left-nav h6{
+    padding-top: 5px;
+    padding-left: 10px;
+}
+
+.nav-row a{
+    color: black;
+    padding-inline: 20px;
+    transition-duration: 0.2s;
+}
+
+.nav-row a:hover{
+    text-decoration: none;
+    color: #F4EA56;
+    transition-duration: 0.2s;
+}
+
+
+.nav-row{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: white;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    z-index: 3;
+}

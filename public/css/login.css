@@ -1,0 +1,100 @@
+.login-container{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 500px;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.padding{
+    padding-top: 80px;
+}
+
+.login-container h2{
+    margin-bottom: 20px;
+}
+
+.logo{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.input{
+    width: 90%;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.input:focus{
+    outline: none;
+}
+
+.sign-button{
+    border:none;
+    background-color: #383838;
+    color: #F4EA56;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transform: scale(1.0);
+    transition-duration: 0.25s;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.sign-button:hover{
+    border:none;
+    background-color: #F4EA56;
+    color: #383838;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transform: scale(1.0);
+    transition-duration: 0.25s;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.facebook-logo{
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.alternatives{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.back{
+    margin-left: 10px;
+    text-decoration: none;
+    color: black;
+    transition-duration: 0.25s;
+    font-size: 30px;
+    padding: 5px 11px 5px 5px;
+}
+
+.back:hover{
+    text-decoration: none;
+    color: #F4EA56;
+    border-radius: 100%;
+    transition-duration: 0.25s;
+}

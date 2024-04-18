@@ -1,0 +1,27 @@
+.banner-container{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.padding-top{
+    padding-top: 52px;
+}
+
+.padding-bottom{
+    padding-bottom: 82px;
+}
+
+.about-title{
+    position: relative;
+    bottom: 20%;
+    background-color: #383838;
+    width: 20%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
