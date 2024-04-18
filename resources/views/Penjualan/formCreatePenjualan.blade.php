@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1>Form Penjualan</h1>
+                <h1>Halo, {{auth()->user()->name}}</h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -34,29 +34,20 @@
                             <input type="" class="form-control" id="" name="no_hp" >
                         </div>
                         <div class="form-group">
-                            <label for="">Nama Petugas</label>
-                            <select name="user_id" class="form-control">
-                                @foreach ($user as $item)
-                                    <option value="{{$item->id}}">{{$item->name}}</option>
-                                @endforeach
-                            </select>
-
-                        </div>
-                        <div class="form-group">
                             <label for="">Tanggal Penjualan</label>
                             <input type="date" class="form-control" id="" name="sale_date" >
                         </div>
 
+                        <button type="button" class="btn btn-primary" id="addSaleItem">Tambah Produk</button>
                         <div class="form-group" id="saleForm">
-                            <button type="button" class="btn btn-primary" id="addSaleItem">Tambah Produk</button>
                             <label for="">Produk</label>
-                            <select name="product_id" id="" class="form-control">
+                            <select name="product_id[]" id="" class="form-control">
                                 @foreach ($product as $item)
                                 <option value="{{ $item->id }}">{{$item->name}}</option>
                                 @endforeach
                             </select>
                             <label for="">Jumlah</label>
-                            <input type="number" class="form-control" id="" name="amount">
+                            <input type="number" class="form-control" id="" name="amount[]">
                         </div>
                     </div>
                     <div class="card-footer">
@@ -69,11 +60,11 @@
     </div>
 </div>
 <script>
-    // document.getElementById('addSaleItem').addEventListener('click', function() {
-    //     var saleForm = document.getElementById('saleForm');
-    //     var newSaleItem = saleForm.cloneNode(true);
-    //     console.log(newSaleItem);
-    //     saleForm.parentNode.insertBefore(newSaleItem, this);
-    // });
+    document.getElementById('addSaleItem').addEventListener('click', function() {
+        var saleForm = document.getElementById('saleForm');
+        var newSaleItem = saleForm.cloneNode(true);
+        // console.log(newSaleItem);
+        saleForm.parentNode.insertBefore(newSaleItem, this);
+    });
 </script>
 @endsection

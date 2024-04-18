@@ -114,8 +114,7 @@ class AdminController extends Controller
 
     public function formCreateSale(){
         $product = ProductModel::all();
-        $user = User::all();
-        return view('Penjualan.formCreatePenjualan', compact('product', 'user'));
+        return view('Penjualan.formCreatePenjualan', compact('product'));
     }
 
     public function sales(Request $request){
@@ -129,22 +128,25 @@ class AdminController extends Controller
         $user = User::find($request->user_id);
         $sale = SalesModel::create([
             'customer_id' => $customer->id,
-            'user_id' => $request->user_id,
+            'user_id' => auth()->user()->id,
             'sale_date' => $request->sale_date,
-            'total_price' =>0
+            'total_price' => 0
         ]);
 
-        $product = ProductModel::find($request->product_id);
-        $detailSale = DetailSalesModel::create([
-            'sale_id' => $sale->id,
-            'product_id' => $request->product_id,
-            'amount' => $request->amount,
-            'sub_total' => $product->price * $request->amount
-        ]);
+        for ($i=0; $i < count($request->product_id); $i++) {
+            $product = ProductModel::find($request->product_id[$i]);
+            $detailSale = DetailSalesModel::create([
+                'sale_id' => $sale->id,
+                'product_id' => $request->product_id[$i],
+                'amount' => $request->amount[$i],
+                'sub_total' => $product->price * $request->amount[$i]
+            ]);
+        }
 
         $sale->total_price = $detailSale->sub_total;
         $sale->save();
-
+        $product->stock = $product->stock - $detailSale->amount;
+        $product->save();
         if($detailSale){
             return redirect('sales')->with('success', 'Berhasil Menambah Penjualan Baru');
         }
