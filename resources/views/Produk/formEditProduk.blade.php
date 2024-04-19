@@ -34,10 +34,10 @@
                             <label for="">Stok</label>
                             <input type="" class="form-control" id="" name="stock" value="{{$product->stock}}">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Img</label>
                             <input type="file" class="form-control" id="" name="img" value="{{$product->img}}">
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-footer">
                         <a href="{{route('product')}}" class="btn btn-warning">Batal</a>

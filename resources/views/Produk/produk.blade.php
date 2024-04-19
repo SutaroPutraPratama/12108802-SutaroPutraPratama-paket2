@@ -22,6 +22,13 @@
                 <div class="card">
                     <div class="card-body">
                         <a href="{{route('tambah-produk')}}" class="btn btn-success">Tambah Produk</a>
+                        <form action="{{ route('product') }}" method="get">
+                            <div class="input-group mb-3">
+                                <input type="search" name="search" class="form-control"
+                                    placeholder="Search">
+                                <button type="submit" class="btn btn-dark">Search</button>
+                            </div>
+                        </form>
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -29,7 +36,7 @@
                                     <th>Name</th>
                                     <th>Price</th>
                                     <th>Stock</th>
-                                    <th>Image</th>
+                                    {{-- <th>Image</th> --}}
                                     <th style="width: 115px">Aksi</th>
                                 </tr>
                             </thead>
@@ -40,7 +47,7 @@
                                     <th>{{$item->name}}</th>
                                     <th>{{$item->price}}</th>
                                     <th>{{$item->stock}}</th>
-                                    <th>{{$item->img}}</th>
+                                    {{-- <th><img src="{{public_path('uploads/image'. $item->img)}}" alt=""></th> --}}
                                     <th>
                                         <a href="{{route('edit-product', $item->id)}}" class="btn btn-primary" ><i class="nav-icon fas fa-pen"></i></a>
                                         <form action="{{route('delete-product', $item->id)}}" method="POST">

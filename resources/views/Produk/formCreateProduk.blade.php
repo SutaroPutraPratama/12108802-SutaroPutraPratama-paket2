@@ -31,12 +31,12 @@
                         </div>
                         <div class="form-group">
                             <label for="">Stok</label>
-                            <input type="" class="form-control" id="" name="stock">
+                            <input type="number" class="form-control" id="" name="stock">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="">Image</label>
                             <input type="file" class="form-control" id="" name="img" >
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="card-footer">
                         <a href="" class="btn btn-warning">Batal</a>

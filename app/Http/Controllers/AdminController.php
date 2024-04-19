@@ -46,8 +46,13 @@ class AdminController extends Controller
         return view('User.user', compact('user'));
     }
 
-    public function allProduct(){
-        $products = ProductModel::all();
+    public function allProduct(Request $request){
+        $query = $request->input('search');
+        if ($query) {
+            $products = ProductModel::where('name', 'like', '%' . $query . '%')->get();
+        }else{
+            $products = ProductModel::all();
+        }
         return view('Produk.produk', compact('products'));
     }
 
@@ -55,26 +60,14 @@ class AdminController extends Controller
          $request->validate([
             'name' => 'required',
             'price' => 'required',
-            'stock' => 'required',
-            'img' => 'required|mimes:png,jpg,jpeg'
+            'stock' => 'required'
         ]);
-
-        if ($request->has('img')) {
-            $file = $request->file('img');
-            $extension = $file->getClientOriginalExtension();
-
-            $filename = time().'.'.$extension;
-            $path = 'uploads/image';
-            $file->move($path, $extension);
-        };
 
         $barang = ProductModel::create([
             'name' => $request->name,
             'price' => $request->price,
             'stock' => $request->stock,
-            'img' => $request->img
         ]);
-        $barang->update(['image' => $filename]);
 
         return redirect('product')->with('success', 'berhasil');
     }
@@ -90,7 +83,6 @@ class AdminController extends Controller
             'name' => $request->name,
             'price' => $request->price,
             'stock' => $request->stock,
-            'img' => $request->img
         ]);
 
         $updateDataProduk = ProductModel::where('id', $product->id)->first();
@@ -133,20 +125,30 @@ class AdminController extends Controller
             'total_price' => 0
         ]);
 
+        $totalPrice = 0;
+
         for ($i=0; $i < count($request->product_id); $i++) {
             $product = ProductModel::find($request->product_id[$i]);
-            $detailSale = DetailSalesModel::create([
-                'sale_id' => $sale->id,
-                'product_id' => $request->product_id[$i],
-                'amount' => $request->amount[$i],
-                'sub_total' => $product->price * $request->amount[$i]
-            ]);
+            if ($product) {
+                $amount = $request->amount[$i];
+                $subTotal = $product->price * $amount;
+                $totalPrice += $subTotal;
+
+                DetailSalesModel::create([
+                    'sale_id' => $sale->id,
+                    'product_id' => $product->id,
+                    'amount' => $amount,
+                    'sub_total' => $subTotal
+                ]);
+
+                $product->stock -= $amount;
+                $product->save();
+            }
         }
 
-        $sale->total_price = $detailSale->sub_total;
+        $sale->total_price = $totalPrice;
         $sale->save();
-        $product->stock = $product->stock - $detailSale->amount;
-        $product->save();
+    
         if($detailSale){
             return redirect('sales')->with('success', 'Berhasil Menambah Penjualan Baru');
         }
@@ -159,10 +161,17 @@ class AdminController extends Controller
         return view('Penjualan.detailPenjualan', compact('salesDetail', 'product'));
     }
 
-    public function createPdf($id){
+    public function struk($id){
+        $struk = DetailSalesModel::where('id', $id)->get();
+        $product = ProductModel::all();
+        return view('Modal.struk', compact('struk', 'product'));
+    }
+
+    public function view_pdf(){
+        $mpdf = new \Mpdf\Mpdf();
         $data = DetailSalesModel::find($id);
-        view()->share('detail', $data);
-        $pdf = PDF::loadView($data);
-        return $pdf->download('pdf_file.pdf');
+        $product = ProductModel::all();
+        $mpdf->WriteHTML(view('Penjualan.detailPenjualan', compact('data', 'product')));
+        $mpdf->Output();
     }
 }

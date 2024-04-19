@@ -10,6 +10,7 @@ use App\Models\ProductModel;
 class DetailSalesModel extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id';
     protected $table = 'detail_sales';
     protected $fillable = ['sale_id', 'product_id', 'amount', 'sub_total'];
 

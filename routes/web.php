@@ -47,4 +47,5 @@ Route::get('/form-create', [AdminController::class, 'formCreateSale'])->name('fo
 Route::post('/create-sale', [AdminController::class, 'sales'])->name('create-sale');
 Route::post('/import-excel-csv-file', [AdminController::class, 'exportExcelCSV'])->name('export-excel');
 Route::get('/detail-penjualan/{id}', [AdminController::class, 'detailPenjualan'])->name('detail-penjualan');
-Route::get('/export-pdf/{id}', [AdminController::class, 'createPdf'])->name('export-pdf');
+Route::get('/export/pdf/{id}', [AdminController::class, 'view_pdf'])->name('export-pdf');
+Route::get('/struk/{id}', [AdminController::class, 'struk'])->name('struk');

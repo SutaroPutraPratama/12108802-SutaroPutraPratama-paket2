@@ -32,7 +32,8 @@
               <th>{{$sale->total_price}}</th>
               <th>{{$sale->user->name}}</th>
               <th>{{$sale->customer->name}}</th>
-              <th><a href="{{route('detail-penjualan', $sale->id)}}" class="btn btn-primary">DETAIL</a></th>
+              {{-- <th><a href="{{route('struk', $sale->id)}}" class="btn btn-primary">DETAIL</a></th> --}}
+              <th><a href="{{route('struk2')}}" class="btn btn-primary">DETAIL</a></th>
           </tr>
           @endforeach
       </tbody>
